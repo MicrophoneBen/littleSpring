@@ -33,20 +33,4 @@ public class SpringConfig {
 		return dataSource;
 	}
 	
-	@Bean
-	public SchedulerFactoryBean schedulerFactoryBean(BasicDataSource dataSource){
-		SchedulerFactoryBean factory = new SchedulerFactoryBean();
-		factory.setDataSource(dataSource);
-		Resource r = new ClassPathResource("quartz-config.xml");
-		factory.setConfigLocation(r);
-		factory.setStartupDelay(30);
-		factory.setApplicationContextSchedulerContextKey("applicationContextKey");
-		factory.setOverwriteExistingJobs(true);
-		factory.setAutoStartup(true);
-		Trigger test = new TestTrigger(); 
-		factory.setTriggers(test);
-		factory.setJobDetails(jobDetails);
-		
-		return factory;
-	}
 }
