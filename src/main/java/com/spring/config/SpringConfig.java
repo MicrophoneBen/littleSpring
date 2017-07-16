@@ -4,27 +4,38 @@ import org.apache.commons.dbcp.BasicDataSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import com.spring.util.BeforeDB;
 
 /**
  * @Description:
  * 
  * @author zhuojl
- * @Date 2017Äê3ÔÂ31ÈÕ
+ * @Date 2017å¹´3æœˆ31æ—¥
  */
 @ComponentScan("com.spring.service")
 @Configuration
+//@ImportResource("classpath:forRpc-service.xml") //å¯¼å…¥xmlé…ç½®é¡¹
 public class SpringConfig {
 	@Bean
 	public BasicDataSource dataSource() {
 		BasicDataSource dataSource = new BasicDataSource();
 		dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-		dataSource.setUrl("jdbc:mysql://127.0.0.1:3306/account");
-		dataSource.setUsername("root");
-		dataSource.setPassword("888888");
+		dataSource.setUrl("jdbc:mysql://192.168.11.121:3306/gxs_test");
+		dataSource.setUsername("gxs_test");
+		dataSource.setPassword("gxs_test");
 		dataSource.setMaxActive(50);
-		dataSource.setValidationQuery("SELECT 1 ");// oracleĞèÒª¸ü¸Ä¡£
+		dataSource.setValidationQuery("SELECT 1 ");// oracleéœ€è¦æ›´æ”¹ã€‚
 		dataSource.setTestOnBorrow(true);
 		return dataSource;
 	}
 	
+	@Bean
+	public BeforeDB beforeDB(BasicDataSource datasource){
+		return new BeforeDB(datasource);
+	} 
+	
+//	<bean id="beforeDB" class="com.ilovestudy.forum.core.system.BeforeDB">
+//	<constructor-arg index="0" ref="dataSource">
+//	</constructor-arg>
+//</bean>
 }

@@ -9,8 +9,6 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.io.ClassPathResource;
-import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.core.io.support.ResourcePatternResolver;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -23,10 +21,10 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  * @Description:   
  *
  * @author         zhuojl
- * @Date           2017Äê3ÔÂ31ÈÕ
+ * @Date           2017å¹´3æœˆ31æ—¥
  */
 @Configuration
-@MapperScan(basePackages = {"com.spring.bean.mapper","com.spring.inter"})//ÅäÖÃ×Ô¶¯×°ÅäbeanµÄÎ»ÖÃ
+@MapperScan(basePackages = {"com.spring.bean.mapper","com.spring.inter"})//é…ç½®è‡ªåŠ¨è£…é…beançš„ä½ç½®
 @EnableTransactionManagement
 public class MybatisConfig  {
 	
@@ -37,11 +35,11 @@ public class MybatisConfig  {
     public SqlSessionFactory sqlSessionFactoryBean() {
         SqlSessionFactoryBean bean = new SqlSessionFactoryBean();
         bean.setDataSource(dataSource);
-        bean.setTypeAliasesPackage("com.spring.bean.model");//ÉèÖÃ±ğÃûÉ¨ÃèÎ»ÖÃ¡£
+        bean.setTypeAliasesPackage("com.spring.bean.model");//è®¾ç½®åˆ«åæ‰«æä½ç½®ã€‚
         /*
         <!-- scan for mappers and let them be autowired -->
         <mybatis:scan base-package="org.mybatis.jpetstore.mapper" />*/
-        //Ìí¼ÓXMLÄ¿Â¼
+        //æ·»åŠ XMLç›®å½•
         ResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
         try {
             bean.setMapperLocations(resolver.getResources("classpath:mapper/*.xml"));

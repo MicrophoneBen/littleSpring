@@ -9,7 +9,7 @@
   <description></description>
   
   <properties><!-- 可以被继承 -->
-	<project.build.sourceEncoding>GBK</project.build.sourceEncoding>
+	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	<spring.version>4.1.0.RELEASE</spring.version>
 	<juint.version>4.9</juint.version>
 	<aspectj.version>1.6.11</aspectj.version>
@@ -20,6 +20,7 @@
   
   
   <dependencies>
+        
 		<dependency>
 		    <groupId>commons-dbcp</groupId>
 		    <artifactId>commons-dbcp</artifactId>
@@ -152,6 +153,16 @@
   		<!-- <scope>test</scope> -->
   	</dependency>
   	
+  	
+  	<!-- <dependency>
+            <groupId>dubbo-api</groupId>
+            <artifactId>dubbo-api</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/src/main/webapp/WEB-INF/lib/dubbo-api.jar</systemPath>
+        </dependency> -->
+  	
+  	
   </dependencies>
   <build>
   	<finalName>core</finalName>
@@ -162,7 +173,7 @@
         <configuration>
           <source>1.6</source>
           <target>1.6</target>
-          <encoding>GBK</encoding>  
+          <encoding>UTF-8</encoding>  
         </configuration>
       </plugin>
     </plugins>
